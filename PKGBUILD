@@ -9,6 +9,7 @@ arch=('aarch64')
 url="https://github.com/cetola/mnt-build"
 license=('GPL2')
 depends=("linux-mnt-reform=${pkgver}-${pkgrel}")
+install="${pkgname}.install"
 source=(
   "reform2_lpc-${pkgver}-${pkgrel}-mnt.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-${pkgrel}-mnt-reform/reform2_lpc-${pkgver}-${pkgrel}-mnt.tar.gz"
 )
