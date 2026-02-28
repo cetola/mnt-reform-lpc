@@ -1,16 +1,16 @@
 pkgbase = mnt-reform-lpc
 	pkgdesc = MNT Reform LPC kernel module (arm64)
-	pkgver = 6.18.13
+	pkgver = 6.18.15
 	pkgrel = 1
 	url = https://github.com/cetola/mnt-build
 	install = mnt-reform-lpc.install
 	arch = aarch64
 	license = GPL2
-	depends = linux-mnt-reform=6.18.13-1
+	depends = linux-mnt-reform=6.18.15-1
 	options = !strip
 	options = !docs
 	options = !emptydirs
-	source = reform2_lpc-6.18.13-1-mnt.tar.gz::https://github.com/cetola/mnt-build/releases/download/6.18.13-1-mnt-reform/reform2_lpc-6.18.13-1-mnt.tar.gz
-	sha256sums = ff45341a1c0ebdad3aa6afed346f5346bd8cb67177d432a54ad7b9469ef546dc
+	source = reform2_lpc-6.18.15-1-mnt.tar.gz::https://github.com/cetola/mnt-build/releases/download/6.18.15-1-mnt-reform/reform2_lpc-6.18.15-1-mnt.tar.gz
+	sha256sums = 6c1e0d30a17be7f3268a8015c7f37e0df01398fec3358644714bd48b71f7bf6f
 
 pkgname = mnt-reform-lpc

@@ -1,7 +1,7 @@
 # Maintainer: Stephano Cetola <stephanoc@gmail.com>
 
 pkgname=mnt-reform-lpc
-pkgver=6.18.13
+pkgver=6.18.15
 pkgrel=1
 _kernver="${pkgver}-mnt-reform"
 pkgdesc="MNT Reform LPC kernel module (arm64)"
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 source=(
   "reform2_lpc-${pkgver}-${pkgrel}-mnt.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-${pkgrel}-mnt-reform/reform2_lpc-${pkgver}-${pkgrel}-mnt.tar.gz"
 )
-sha256sums=('ff45341a1c0ebdad3aa6afed346f5346bd8cb67177d432a54ad7b9469ef546dc')
+sha256sums=('6c1e0d30a17be7f3268a8015c7f37e0df01398fec3358644714bd48b71f7bf6f')
 
 options=(!strip !docs !emptydirs)
 
