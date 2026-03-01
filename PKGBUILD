@@ -30,7 +30,6 @@ BUILT_MODULE_NAME[0]="reform2_lpc"
 BUILT_MODULE_LOCATION[0]="."
 DEST_MODULE_LOCATION[0]="/updates/dkms"
 MAKE[0]="make KERNEL_DIR=/lib/modules/\${kernelver}/build"
-CLEAN="make clean KERNEL_DIR=/lib/modules/\${kernelver}/build"
 AUTOINSTALL="yes"
 EOF_DKMS
 }
