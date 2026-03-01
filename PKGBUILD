@@ -1,25 +1,36 @@
 # Maintainer: Stephano Cetola <stephanoc@gmail.com>
+# SPDX-License-Identifier: MIT
 
-pkgname=mnt-reform-lpc
-pkgver=6.18.15
+pkgname=mnt-reform-lpc-dkms
+_pkgbase=reform2_lpc
+pkgver=1.85
 pkgrel=1
-_kernver="${pkgver}-mnt-reform"
-pkgdesc="MNT Reform LPC kernel module (arm64)"
+pkgdesc='DKMS module for the MNT Reform LPC11U24 system controller'
 arch=('aarch64')
-url="https://github.com/cetola/mnt-build"
-license=('GPL2')
-depends=("linux-mnt-reform=${pkgver}-${pkgrel}")
-install="${pkgname}.install"
-source=(
-  "reform2_lpc-${pkgver}-${pkgrel}-mnt.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-${pkgrel}-mnt-reform/reform2_lpc-${pkgver}-${pkgrel}-mnt.tar.gz"
-)
-sha256sums=('6c1e0d30a17be7f3268a8015c7f37e0df01398fec3358644714bd48b71f7bf6f')
-
-options=(!strip !docs !emptydirs)
+url='https://source.mnt.re/reform/reform-tools'
+license=('GPL-2.0-only')
+depends=('dkms' 'linux-mnt-reform' 'linux-mnt-reform-headers')
+makedepends=('git')
+provides=('mnt-reform-lpc')
+conflicts=('mnt-reform-lpc')
+source=("reform-tools::git+https://source.mnt.re/reform/reform-tools.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir"
+    local _srcdir="${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
 
-  install -Dm644 reform2_lpc.ko \
-    "$pkgdir/usr/lib/modules/${_kernver}/extra/reform2_lpc.ko"
+    install -d "${_srcdir}"
+    install -Dm644 "${srcdir}/reform-tools/lpc/Makefile" "${_srcdir}/Makefile"
+    install -Dm644 "${srcdir}/reform-tools/lpc/reform2_lpc.c" "${_srcdir}/reform2_lpc.c"
+
+    cat > "${_srcdir}/dkms.conf" <<EOF_DKMS
+PACKAGE_NAME="${_pkgbase}"
+PACKAGE_VERSION="${pkgver}"
+BUILT_MODULE_NAME[0]="reform2_lpc"
+BUILT_MODULE_LOCATION[0]="."
+DEST_MODULE_LOCATION[0]="/updates/dkms"
+MAKE[0]="make KERNEL_DIR=/lib/modules/\${kernelver}/build"
+CLEAN="make clean KERNEL_DIR=/lib/modules/\${kernelver}/build"
+AUTOINSTALL="yes"
+EOF_DKMS
 }
