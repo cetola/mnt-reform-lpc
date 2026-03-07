@@ -7,8 +7,6 @@ pkgbase = mnt-reform-lpc-dkms
 	license = GPL-2.0-only
 	makedepends = git
 	depends = dkms
-	depends = linux-mnt-reform
-	depends = linux-mnt-reform-headers
 	provides = mnt-reform-lpc
 	conflicts = mnt-reform-lpc
 	source = reform-tools::git+https://source.mnt.re/reform/reform-tools.git#tag=1.85
